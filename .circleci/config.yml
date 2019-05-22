@@ -29,8 +29,10 @@ jobs:
     steps:
       - attach_workspace:
           at: ./
-      - run: npm run test:node
-      - run: npm run test:browser
+      - run:
+          command: |
+            TESTFILES=$(circleci tests glob "test/**/*.spec.js" | circleci tests split)
+            npx mocha $TESTFILES
 
 workflows:
   version: 2
