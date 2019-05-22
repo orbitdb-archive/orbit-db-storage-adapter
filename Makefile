@@ -6,6 +6,8 @@ deps:
 
 test: deps
 	npm run test
+	rm -f dump.rdb
+	rm -f orbitdb.json
 	
 build: test
 	mkdir -p examples/browser/lib/
