@@ -6,7 +6,16 @@
 
 This is a tool that manages a persistent connection to an [`abstract-leveldown`](https://github.com/Level/abstract-leveldown) compliant store. The implementation tests indicate include examples for the following stores
 
-- TODO
+- **[`leveldown`][leveldown]**
+- **[`memdown`][memdown]**
+- **[`level-js`][level-js]**
+- **[`jsondown`][jsondown]**
+- **[`mongodown`][mongodown]**
+- **[`sqldown`][sqldown]**
+- **[`fruitdown`][fruitdown]**
+- **[`localstorage-down`][localstorage-down]**
+- **[`redisdown`][redisdown]**
+- **[`localdown`][localdown]**
 
 Any other abstract-leveldown compliant store should work, and their integration 
 
