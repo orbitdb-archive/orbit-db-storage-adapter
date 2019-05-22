@@ -5,7 +5,6 @@ executors:
   node10-browsers:
     docker:
       - image: circleci/node:10-browsers
-    working_directory: /tmp
 
 jobs:
   setup:
@@ -16,14 +15,13 @@ jobs:
       - run: make clean-dependencies
       - run: make deps
       - persist_to_workspace:
-          root: workspace
+          root: /tmp/workspace
           paths:
             - src
             - node_modules
             - test
   tests:
-    docker:
-      - image: circleci/node:10-browsers
+    executor: node10-browsers
     parallelism: 2
     steps:
       - attach_workspace:
