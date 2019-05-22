@@ -7,13 +7,14 @@ jobs:
       - image: circleci/node:10-browsers
     steps:
       - checkout
-      - make rebuild
+      - run: make rebuild
   tests:
     docker:
       - image: circleci/node:10-browsers
+    parallelism: 2
     steps:
-      - npm run test:node
-      - npm run test:browser
+      - run: npm run test:node
+      - run: npm run test:browser
 
 workflows:
   version: 2
