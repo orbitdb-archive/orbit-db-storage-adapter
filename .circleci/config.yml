@@ -21,4 +21,6 @@ workflows:
   Implementations:
     jobs:
       - setup
-      - tests
+      - tests:
+          requires:
+            - setup
