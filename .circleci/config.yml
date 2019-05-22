@@ -1,10 +1,15 @@
 # Use the latest 2.1 version of CircleCI pipeline processing engine, see https://circleci.com/docs/2.0/configuration-reference/
 version: 2.1
 
-jobs:
-  setup:
+executors:
+  node10-browsers:
     docker:
       - image: circleci/node:10-browsers
+    working_directory: /tmp
+
+jobs:
+  setup:
+    executor: node10-browsers
     steps:
       - checkout
       - run: mkdir -p workspace
