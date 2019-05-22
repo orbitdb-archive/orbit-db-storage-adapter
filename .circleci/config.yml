@@ -6,19 +6,19 @@ jobs:
     docker:
       - image: circleci/node:10-browsers
     steps:
-      - checkout:
-          path: ./repo
-      - run: cd ./repo
+      - checkout
       - run: make clean-dependencies
       - run: make deps
       - persist_to_workspace:
-          root: ./repo
+          root: ./
           path: ./
   tests:
     docker:
       - image: circleci/node:10-browsers
     parallelism: 2
     steps:
+      - attach_workspace:
+          at: ./
       - run: npm run test:node
       - run: npm run test:browser
 
