@@ -8,6 +8,7 @@ jobs:
     steps:
       - checkout:
           path: ./repo
+      - run: cd ./repo
       - run: make clean-dependencies
       - run: make deps
       - persist_to_workspace:
