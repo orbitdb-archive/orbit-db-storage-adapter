@@ -10,8 +10,8 @@ jobs:
         path: ./repo
       - run: make clean-dependencies
       - run: make deps
-    persist_to_workspace:
-      root: ./repo
+      - persist_to_workspace:
+        root: ./repo
   tests:
     docker:
       - image: circleci/node:10-browsers
