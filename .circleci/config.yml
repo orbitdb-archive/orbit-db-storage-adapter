@@ -11,7 +11,7 @@ jobs:
     executor: node10-browsers
     steps:
       - checkout
-      - run: mkdir -p workspace
+      - run: mkdir -p /tmp/workspace
       - run: make clean-dependencies
       - run: make deps
       - persist_to_workspace:
