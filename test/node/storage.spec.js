@@ -3,7 +3,7 @@ const path = require('path')
 
 const assert = require('assert')
 
-const Storage = require('../src')
+const Storage = require('../../src')
 const implementations = require('./implementations')
 const timeout = 5000
 

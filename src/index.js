@@ -1,6 +1,7 @@
+'use strict'
+
 const path = require("path")
 const levelup = require('levelup')
-const leveldown = require('leveldown')
 const mkdirp = require('mkdirp')
 
 // Should work for all abstract-leveldown compliant stores
@@ -47,6 +48,6 @@ class Storage {
 
 
 module.exports = (storageType) => {
-  if(!storageType) storageType = leveldown
+  if(!storageType) throw new Error("storageType must be an abstract-leveldown compliant store")
   return new Storage(storageType, mkdirp)
 }
