@@ -1,0 +1,4 @@
+test/browser/bundle*
+dump.rdb
+orbitdb.json
+.circleci
