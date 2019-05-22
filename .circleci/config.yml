@@ -12,6 +12,7 @@ jobs:
       - run: make deps
       - persist_to_workspace:
           root: ./repo
+          path: ./
   tests:
     docker:
       - image: circleci/node:10-browsers
