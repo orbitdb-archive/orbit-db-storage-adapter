@@ -10,8 +10,11 @@ jobs:
       - run: make clean-dependencies
       - run: make deps
       - persist_to_workspace:
-          root: ./
-          path: ./
+          root: workspace
+          paths:
+            - src
+            - node_modules
+            - test
   tests:
     docker:
       - image: circleci/node:10-browsers
