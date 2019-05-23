@@ -2,18 +2,18 @@
 
 const path = require("path")
 const levelup = require('levelup')
-const mkdirp = require('mkdirp')
 
 // Should work for all abstract-leveldown compliant stores
 
 class Storage {
-  constructor (storage, mkdir) {
+  constructor (storage, options) {
     this.storage = storage
+    this.leveldownOptions = options
   }
 
   createStore(directory = "./orbitdb", options = {}) {
     return new Promise((resolve, reject) => {
-      const db = this.storage(directory, options)
+      const db = this.storage(directory, this.leveldownoptions)
 
       // For compatibility with older abstract-leveldown stores
       if (!db.status) db.status = "unknown-shim"
@@ -47,7 +47,4 @@ class Storage {
 }
 
 
-module.exports = (storageType) => {
-  if(!storageType) throw new Error("storageType must be an abstract-leveldown compliant store")
-  return new Storage(storageType, mkdirp)
-}
+module.exports = Storage

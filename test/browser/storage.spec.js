@@ -26,7 +26,7 @@ implementations.forEach(implementation => {
 
     beforeEach(async () => {
       let storageType = implementation.module
-      storage = Storage(storageType);
+      storage = new Storage(storageType);
       if(server && server.start) await implementation.server.start({})
     })
 
