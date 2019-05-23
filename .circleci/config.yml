@@ -23,12 +23,17 @@ jobs:
             - test
             - conf
             - package.json
-  tests:
+  test-node:
     executor: node10-browsers
     steps:
       - attach_workspace:
           at: ./
       - run: npm run test:node
+  test-browser:
+    executor: node10-browsers
+    steps:
+      - attach_workspace:
+          at: ./
       - run: npm run test:browser
 
 workflows:
@@ -36,6 +41,9 @@ workflows:
   Implementations:
     jobs:
       - setup
-      - tests:
+      - test-node:
+          requires:
+            - setup
+      - test-browser:
           requires:
             - setup
