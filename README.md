@@ -6,15 +6,15 @@
 
 This is a tool that manages a persistent connection to an [`abstract-leveldown`](https://github.com/Level/abstract-leveldown) compliant store. The implementation tests indicate include examples for the following stores
 
-- **[`leveldown`](leveldown)**
-- **[`level-js`](level-js)**
-- **[`jsondown`](jsondown)**
-- **[`mongodown`](mongodown)**
-- **[`sqldown`](sqldown)**
-- **[`fruitdown`](fruitdown)**
-- **[`localstorage-down`](localstorage-down)**
-- **[`redisdown`](redisdown)**
-- **[`localdown`](localdown)**
+- **[`leveldown`](https://github.com/Level/leveldown)**
+- **[`level-js`](https://github.com/Level/level.js)**
+- **[`jsondown`](https://github.com/toolness/jsondown)**
+- **[`mongodown`](https://github.com/watson/mongodown)**
+- **[`sqldown`](https://github.com/calvinmetcalf/sqldown)**
+- **[`fruitdown`](https://github.com/nolanlawson/fruitdown)**
+- **[`localstorage-down`](https://github.com/No9/localstorage-down)**
+- **[`redisdown`](https://github.com/hmalphettes/redisdown)**
+- **[`localdown`](https://github.com/bhoriuchi/localdown)**
 
 [Help is wanted](https://github.com/orbitdb/orbit-db-storage-adapter/issues/3) to support more stores!
 
