@@ -25,7 +25,6 @@ jobs:
             - package.json
   tests:
     executor: node10-browsers
-    parallelism: 2
     steps:
       - attach_workspace:
           at: ./
