@@ -5,7 +5,7 @@ const assert = require('assert')
 
 const Storage = require('../../src')
 const implementations = require('./implementations')
-const timeout = 5000
+const timeout = 50000
 
 
 implementations.forEach(implementation => {
