@@ -16,7 +16,7 @@ This is a tool that manages a persistent connection to an [`abstract-leveldown`]
 - **[`redisdown`](redisdown)**
 - **[`localdown`](localdown)**
 
-Help is wanted to support more stores!
+[Help is wanted](https://github.com/orbitdb/orbit-db-storage-adapter/issues/3) to support more stores!
 
 OrbitDB uses it primarily with levelup (in node.js) and level-js (in the browser) and inside the orbit-db-keystore and orbit-db-cache packages.
 
@@ -55,7 +55,7 @@ When setting everything up, you have the opportunity to pass two sets of options
  
 ## Contributing
 
-Pull requests and issues are welcome. Issues tagged with "Help Wanted" will have the most impact.
+Pull requests and issues are welcome. Issues tagged with "[Help Wanted](https://github.com/orbitdb/orbit-db-storage-adapter/issues?q=is%3Aopen+is%3Aissue+label%3A"help+wanted")" will have the most impact.
 
 ## License 
 
