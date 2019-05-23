@@ -11,6 +11,7 @@ jobs:
     executor: node10-browsers
     steps:
       - checkout
+      - run: npm run lint
       - run: mkdir -p /tmp/workspace
       - run: make clean-dependencies
       - run: make deps

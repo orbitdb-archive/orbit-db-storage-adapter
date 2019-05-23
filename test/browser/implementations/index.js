@@ -1,15 +1,15 @@
 const implementations = [
   {
-    key: "level-js",
-    module: require("level-js")
+    key: 'level-js',
+    module: require('level-js')
   },
   {
-    key: "localdown",
-    module: require("localstorage-down")
+    key: 'localdown',
+    module: require('localstorage-down')
   },
   {
-    key: "fruitdown",
-    module: require("fruitdown")
+    key: 'fruitdown',
+    module: require('fruitdown')
   }
 ]
 

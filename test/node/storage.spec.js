@@ -1,12 +1,8 @@
-const fs = require('fs')
-const path = require('path')
-
 const assert = require('assert')
 
 const Storage = require('../../src')
 const implementations = require('./implementations')
 const timeout = 50000
-
 
 implementations.forEach(implementation => {
   describe(`Storage Adapters Defaults - ${implementation.key}`, function () {
@@ -18,39 +14,39 @@ implementations.forEach(implementation => {
     let server = implementation.server
 
     const data = [
-      { type: (typeof true), key: "boolean", value: true },
-      { type: (typeof 1.0), key: "number", value: 9000 },
-      { type: (typeof 'x'), key: "strng", value: "string value" },
-      { type: (typeof []), key: "array", value: [1,2,3,4] },
-      { type: (typeof {}), key: "object", value: { object: "object", key: "key" }}
+      { type: (typeof true), key: 'boolean', value: true },
+      { type: (typeof 1.0), key: 'number', value: 9000 },
+      { type: (typeof 'x'), key: 'strng', value: 'string value' },
+      { type: (typeof []), key: 'array', value: [1, 2, 3, 4] },
+      { type: (typeof {}), key: 'object', value: { object: 'object', key: 'key' } }
     ]
 
     beforeEach(async () => {
       let storageType = implementation.module
-      storage = new Storage(storageType);
-      if(server && server.start) await implementation.server.start({})
+      storage = new Storage(storageType)
+      if (server && server.start) await implementation.server.start({})
     })
 
     afterEach(async () => {
       await store.close()
       await storage.destroy(store)
-      if(server && server.afterEach) await implementation.server.afterEach()
+      if (server && server.afterEach) await implementation.server.afterEach()
     })
 
     after(async () => {
-      if(server && server.stop) await implementation.server.stop()
+      if (server && server.stop) await implementation.server.stop()
     })
 
-    it("Creates a store in default ./orbitdb directory", async () => {
+    it('Creates a store in default ./orbitdb directory', async () => {
       store = await storage.createStore(location, implementation.defaultOptions || {})
-      assert.equal(store.db.status, "open")
-      assert.equal(store.db.location, location || './orbitdb')
+      assert.strictEqual(store.db.status, 'open')
+      assert.strictEqual(store.db.location, location || './orbitdb')
     })
 
-    it("Creates a store in a custom directory", async () => {
+    it('Creates a store in a custom directory', async () => {
       store = await storage.createStore(location || './customDir')
-      assert.equal(store.db.status, "open")
-      assert.equal(store.db.location, location || './customDir')
+      assert.strictEqual(store.db.status, 'open')
+      assert.strictEqual(store.db.location, location || './customDir')
     })
 
     data.forEach(d => {
@@ -60,7 +56,7 @@ implementations.forEach(implementation => {
         const val = await store.get(d.key)
         const decodedVal = JSON.parse(val.toString())
         assert.deepStrictEqual(decodedVal, d.value)
-        assert.equal(typeof decodedVal, d.type)
+        assert.strictEqual(typeof decodedVal, d.type)
       })
 
       it('deletes properly', async () => {
@@ -68,9 +64,9 @@ implementations.forEach(implementation => {
         await store.put(d.key, JSON.stringify(d.value))
         await store.del(d.key, JSON.stringify(d.value))
         try {
-          const val = await store.get(d.key)
-        } catch(e) {
-          assert.equal(true, true)
+          await store.get(d.key)
+        } catch (e) {
+          assert.strictEqual(true, true)
         }
       })
     })

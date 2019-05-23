@@ -8,7 +8,7 @@ module.exports = {
   // TODO: put all tests in a .js file that webpack can use as entry point
   entry: glob.sync('./test/browser/*.spec.js'),
   output: {
-    filename: '../test/browser/bundle.js',
+    filename: '../test/browser/bundle.js'
   },
   target: 'web',
   mode: 'production',

@@ -7,9 +7,9 @@
 // const tempy = require('tempy')
 // const suite = require('abstract-leveldown/test')
 // const implementations = require('./implementations')
-// 
+//
 // const Storage = require("..")
-// 
+//
 // implementations.forEach(async (implementation) => {
 //   await suite({
 //     test: test,
