@@ -43,7 +43,7 @@
     "level-js": "^4.0.1",
     "localstorage-down": "^0.6.7",
     "mocha": "^6.1.4",
-    "mocha-headless-chrome": "^2.0.2",
+    "mocha-headless-chrome": "aphelionz/mocha-headless-chrome",
     "mongo-unit": "^1.4.4",
     "mongodown": "^1.2.0",
     "orbit-db-test-utils": "^0.1.0",
