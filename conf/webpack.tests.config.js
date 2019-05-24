@@ -6,7 +6,7 @@ const path = require('path')
 
 module.exports = {
   // TODO: put all tests in a .js file that webpack can use as entry point
-  entry: glob.sync('./test/browser/*.spec.js'),
+  entry: glob.sync('./test/*.spec.js'),
   output: {
     filename: '../test/browser/bundle.js'
   },
@@ -18,12 +18,17 @@ module.exports = {
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
       }
-    })
+    }),
+    new webpack.IgnorePlugin(/mongo|redis/)
   ],
   externals: {
     fs: '{}',
     fatfs: '{}',
-    runtimejs: '{}'
+    runtimejs: '{}',
+    net: '{}',
+    tls: '{}',
+    "child_process": {},
+    dns: '{}',
     // path: '{}',
     // "node-gyp-build": '{}'
   },

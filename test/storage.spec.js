@@ -1,11 +1,11 @@
 const assert = require('assert')
 
-const Storage = require('../../src')
+const Storage = require('../src')
 const implementations = require('./implementations')
 const timeout = 50000
 
 implementations.forEach(implementation => {
-  describe(`Storage Adapters Defaults - ${implementation.key}`, function () {
+  describe(`Storage Adapters - ${implementation.key}`, function () {
     this.timeout(timeout)
 
     let storage, store
@@ -23,7 +23,7 @@ implementations.forEach(implementation => {
 
     beforeEach(async () => {
       let storageType = implementation.module
-      storage = new Storage(storageType)
+      storage = Storage(storageType)
       if (server && server.start) await implementation.server.start({})
     })
 

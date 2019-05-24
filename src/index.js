@@ -45,4 +45,4 @@ class Storage {
   }
 }
 
-module.exports = Storage
+module.exports = (storage, options) => new Storage(storage, options)

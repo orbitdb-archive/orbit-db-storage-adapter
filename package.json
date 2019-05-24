@@ -5,7 +5,7 @@
   "main": "./src/index.js",
   "scripts": {
     "test": "npm run test:node && npm run test:browser",
-    "test:node": "TEST=all mocha ./test/node",
+    "test:node": "TEST=all mocha",
     "test:browser": "npm run build:tests && mocha-headless-chrome -f ./test/browser/index.html -a no-sandbox",
     "build": "webpack --config ./conf/webpack.config.js",
     "build:tests": "webpack --config ./conf/webpack.tests.config.js --mode production",
