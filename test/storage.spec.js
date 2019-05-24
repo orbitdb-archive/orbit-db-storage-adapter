@@ -1,7 +1,7 @@
 const assert = require('assert')
 
 const Storage = require('../src')
-const implementations = require('./implementations')
+const { implementations } = require('orbit-db-test-utils')
 const timeout = 50000
 
 implementations.forEach(implementation => {
