@@ -4,6 +4,10 @@ const implementations = [
     module: require('level-js')
   },
   {
+    key: 'memdown',
+    module: require('memdown')
+  },
+  {
     key: 'localdown',
     module: require('localstorage-down')
   },

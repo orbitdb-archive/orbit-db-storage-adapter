@@ -26,7 +26,9 @@
     "hajamark <mark@haja.io>"
   ],
   "standard": {
-    "env": [ "mocha" ]
+    "env": [
+      "mocha"
+    ]
   },
   "license": "MIT",
   "bugs": {
@@ -44,13 +46,13 @@
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/runtime": "^7.4.5",
-    "@orbitdb/eslint-config-orbitdb": "0.0.2",
     "assert": "^2.0.0",
     "babel-loader": "^8.0.6",
     "fruitdown": "^1.0.2",
     "jsondown": "^1.0.0",
     "level-js": "^4.0.1",
     "localstorage-down": "^0.6.7",
+    "memdown": "^4.0.0",
     "mocha": "^6.1.4",
     "mocha-headless-chrome": "aphelionz/mocha-headless-chrome",
     "mongo-unit": "^1.4.4",

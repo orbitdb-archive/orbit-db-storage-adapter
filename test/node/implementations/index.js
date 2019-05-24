@@ -8,6 +8,10 @@ const implementations = [
     module: require('leveldown')
   },
   {
+    key: 'memdown',
+    module: require('memdown')
+  },
+  {
     key: 'localdown',
     module: require('localstorage-down')
   },
@@ -44,11 +48,6 @@ const implementations = [
       }
     }
   }
-  // TODO: browser stuff
-  // {
-  //   key: "fruitdown",
-  //   module: require("fruitdown")
-  // }
 ]
 
 if (process.env.TEST && process.env.TEST !== 'all') {
