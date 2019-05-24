@@ -11,10 +11,10 @@ jobs:
     executor: node10-browsers
     steps:
       - checkout
+      - run: npm install standard && make run lint
       - run: mkdir -p /tmp/workspace
       - run: make clean-dependencies
       - run: make deps
-      - run: npm run lint
       - run: cp -R conf src node_modules test package.json /tmp/workspace
       - persist_to_workspace:
           root: /tmp/workspace
@@ -36,6 +36,12 @@ jobs:
       - attach_workspace:
           at: ./
       - run: npm run test:browser
+  build:
+    executor: node10-browsers
+    steps:
+      - attach_workspace:
+          at: ./
+      - run: npm run build
 
 workflows:
   version: 2
@@ -46,5 +52,8 @@ workflows:
           requires:
             - setup
       - test-browser:
+          requires:
+            - setup
+      - build:
           requires:
             - setup
