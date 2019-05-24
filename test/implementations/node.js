@@ -5,34 +5,34 @@ const exec = require('child_process').exec
 module.exports = [
   {
     key: 'leveldown',
-    type: "node",
+    type: 'node',
     module: require('leveldown')
   },
   {
     key: 'memdown',
-    type: "node",
+    type: 'node',
     module: require('memdown')
   },
   {
     key: 'localdown',
-    type: "node",
+    type: 'node',
     module: require('localstorage-down')
   },
   {
     key: 'jsondown',
-    type: "node",
+    type: 'node',
     module: require('jsondown'),
     fileName: 'orbitdb.json'
   },
   {
     key: 'sqldown',
-    type: "node",
+    type: 'node',
     module: require('sqldown'),
     fileName: 'orbitdb.sql'
   },
   {
     key: 'mongodown',
-    type: "node",
+    type: 'node',
     module: require('mongodown'),
     fileName: 'mongodb://localhost:27017/test',
     server: {
@@ -43,7 +43,7 @@ module.exports = [
   },
   {
     key: 'redisdown',
-    type: "node",
+    type: 'node',
     module: require('redisdown'),
     server: {
       start: async () => {

@@ -27,8 +27,8 @@ module.exports = {
     runtimejs: '{}',
     net: '{}',
     tls: '{}',
-    "child_process": {},
-    dns: '{}',
+    'child_process': {},
+    dns: '{}'
     // path: '{}',
     // "node-gyp-build": '{}'
   },
