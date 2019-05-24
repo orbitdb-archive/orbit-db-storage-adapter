@@ -7,6 +7,7 @@
 This is a tool that manages a persistent connection to an [`abstract-leveldown`](https://github.com/Level/abstract-leveldown) compliant store. The implementation tests indicate include examples for the following stores
 
 - **[`leveldown`](https://github.com/Level/leveldown)**
+- **[`memdown`](https://github.com/Level/memdown)**
 - **[`level-js`](https://github.com/Level/level.js)**
 - **[`jsondown`](https://github.com/toolness/jsondown)**
 - **[`mongodown`](https://github.com/watson/mongodown)**
