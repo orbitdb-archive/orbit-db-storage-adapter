@@ -37,9 +37,8 @@ Usage is the same on the command line or in the browser. `async`/`await` used fo
 // Requirements
 const leveldown = require('leveldown') // or any abstract-leveldown complaint store
 const leveldownOptions = {}
-const Storage = require('orbit-db-storage-adapter')(leveldown)
+const storage = require('orbit-db-storage-adapter')(leveldown, leveldown options)
 
-const storage = new Storage(leveldown, leveldownOptions) // These options passed to leveldown factory 
 const levelupOptions = {} // see below
 store = await storage.createStore(location, levelupOptions) // These options passed to levelup instance
 // ***
