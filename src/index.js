@@ -4,7 +4,6 @@ const levelup = require('levelup')
 
 // Should work for all abstract-leveldown compliant stores
 
-
 /*
  * createIfMissing (boolean, default: true): If true, will initialise an empty database at the specified location if one doesn't already exist. If false and a database doesn't exist you will receive an error in your open() callback and your database won't open.
  *
@@ -21,7 +20,7 @@ class Storage {
     errorIfExists: false,
     compression: true,
     cacheSize: 8 * 1024 * 1024 }
-  ){
+  ) {
     this.storage = storage
     this.options = { down: options }
   }
@@ -63,7 +62,7 @@ class Storage {
     })
   }
 
-  async preCreate(directory, options) {} // to be overridden
+  async preCreate (directory, options) {} // to be overridden
 }
 
 module.exports = (storage, options) => new Storage(storage, options)
