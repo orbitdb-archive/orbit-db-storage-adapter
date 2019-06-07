@@ -15,35 +15,40 @@ const levelup = require('levelup')
  */
 
 class Storage {
-  constructor (storage, options = {
-    createIfMissing: true,
-    errorIfExists: false,
-    compression: true,
-    cacheSize: 8 * 1024 * 1024 }
-  ) {
+  constructor (storage, options = {}) {
+    const defaults = {
+      createIfMissing: true,
+      errorIfExists: false,
+      compression: true,
+      cacheSize: 8 * 1024 * 1024,
+    }
+
     this.storage = storage
-    this.options = { down: options }
+    this.preCreate = options.preCreate ? options.preCreate : () => {}
+
+    const leveldownOptions = Object.assign({}, options, defaults)
+    delete leveldownOptions.preCreate
+    this.options = { down: leveldownOptions }
   }
 
   createStore (directory = './orbitdb', options = {}) {
-    return new Promise((resolve, reject) => {
+    return new Promise(async (resolve, reject) => {
       this.options.up = options
-      this.preCreate(directory, this.options).then(() => {
-        const db = this.storage(directory, this.options.down)
+      await this.preCreate(directory, this.options)
+      const db = this.storage(directory, this.options.down)
 
-        // For compatibility with older abstract-leveldown stores
-        if (!db.status) db.status = 'unknown-shim'
-        if (!db.location) db.location = directory
+      // For compatibility with older abstract-leveldown stores
+      if (!db.status) db.status = 'unknown-shim'
+      if (!db.location) db.location = directory
 
-        const store = levelup(db, options)
-        store.open((err) => {
-          if (err) {
-            return reject(err)
-          }
-          // More backwards compatibility
-          if (db.status === 'unknown-shim') db.status = 'open'
-          resolve(store)
-        })
+      const store = levelup(db, options)
+      store.open((err) => {
+        if (err) {
+          return reject(err)
+        }
+        // More backwards compatibility
+        if (db.status === 'unknown-shim') db.status = 'open'
+        resolve(store)
       })
     })
   }
