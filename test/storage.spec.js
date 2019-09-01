@@ -2,7 +2,55 @@ const assert = require('assert')
 
 const Storage = require('../src')
 const { implementations } = require('orbit-db-test-utils')
-const timeout = 50000
+const timeout = 2000
+
+const data = [
+  { type: (typeof true), key: 'boolean', value: true },
+  { type: (typeof 1.0), key: 'number', value: 9000 },
+  { type: (typeof 'x'), key: 'strng', value: 'string value' },
+  { type: (typeof []), key: 'array', value: [1, 2, 3, 4] },
+  { type: (typeof {}), key: 'object', value: { object: 'object', key: 'key' } }
+]
+
+describe('Storage Adapters - Default (level)', function () {
+  this.timeout(timeout)
+
+  let storage, store
+
+  before(async () => {
+    storage = Storage()
+    store = await storage.createStore()
+  })
+
+  it('creates a level store if no storage is passed', async () => {
+    assert.strictEqual(store.db.status, 'opening')
+    assert.strictEqual(store.db._db.db.location, './orbitdb')
+  })
+
+  data.forEach(d => {
+    it(`puts and gets a ${d.key}`, async () => {
+      await store.put(d.key, JSON.stringify(d.value))
+      const val = await store.get(d.key)
+      const decodedVal = JSON.parse(val.toString())
+      assert.deepStrictEqual(decodedVal, d.value)
+      assert.strictEqual(typeof decodedVal, d.type)
+    })
+
+    it('deletes properly', async () => {
+      await store.put(d.key, JSON.stringify(d.value))
+      await store.del(d.key, JSON.stringify(d.value))
+      try {
+        await store.get(d.key)
+      } catch (e) {
+        assert.strictEqual(true, true)
+      }
+    })
+  })
+
+  after(async () => {
+    await store.close()
+  })
+})
 
 implementations.forEach(implementation => {
   describe(`Storage Adapters - ${implementation.key}`, function () {
@@ -12,14 +60,6 @@ implementations.forEach(implementation => {
 
     let location = implementation.fileName
     let server = implementation.server
-
-    const data = [
-      { type: (typeof true), key: 'boolean', value: true },
-      { type: (typeof 1.0), key: 'number', value: 9000 },
-      { type: (typeof 'x'), key: 'strng', value: 'string value' },
-      { type: (typeof []), key: 'array', value: [1, 2, 3, 4] },
-      { type: (typeof {}), key: 'object', value: { object: 'object', key: 'key' } }
-    ]
 
     beforeEach(async () => {
       let storageType = implementation.module

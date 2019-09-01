@@ -1,6 +1,7 @@
 'use strict'
 
 const levelup = require('levelup')
+const level = require('level')
 
 // Should work for all abstract-leveldown compliant stores
 
@@ -20,7 +21,7 @@ class Storage {
       createIfMissing: true,
       errorIfExists: false,
       compression: true,
-      cacheSize: 8 * 1024 * 1024,
+      cacheSize: 8 * 1024 * 1024
     }
 
     this.storage = storage
@@ -35,21 +36,28 @@ class Storage {
     return new Promise(async (resolve, reject) => {
       this.options.up = options
       await this.preCreate(directory, this.options)
-      const db = this.storage(directory, this.options.down)
+      let store, db
 
-      // For compatibility with older abstract-leveldown stores
-      if (!db.status) db.status = 'unknown-shim'
-      if (!db.location) db.location = directory
+      if (this.storage) {
+        db = this.storage(directory, this.options.down)
 
-      const store = levelup(db, options)
-      store.open((err) => {
-        if (err) {
-          return reject(err)
-        }
-        // More backwards compatibility
-        if (db.status === 'unknown-shim') db.status = 'open'
-        resolve(store)
-      })
+        // For compatibility with older abstract-leveldown stores
+        if (!db.status) db.status = 'unknown-shim'
+        if (!db.location) db.location = directory
+
+        store = levelup(db, options)
+        store.open((err) => {
+          if (err) {
+            return reject(err)
+          }
+
+          // More backwards compatibility
+          if (db && db.status === 'unknown-shim') db.status = 'open'
+          resolve(store)
+        })
+      } else {
+        resolve(level(directory, options))
+      }
     })
   }
 
