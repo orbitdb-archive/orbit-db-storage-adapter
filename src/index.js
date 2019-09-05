@@ -2,6 +2,7 @@
 
 const levelup = require('levelup')
 const level = require('level')
+const fs = require('fs')
 
 // Should work for all abstract-leveldown compliant stores
 
@@ -56,6 +57,8 @@ class Storage {
           resolve(store)
         })
       } else {
+        // Default leveldown or level-js store with directory creation
+        if(fs && fs.mkdirSync) fs.mkdirSync(directory, { recursive: true })
         resolve(level(directory, options))
       }
     })
