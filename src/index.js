@@ -59,7 +59,9 @@ class Storage {
       } else {
         // Default leveldown or level-js store with directory creation
         if (fs && fs.mkdirSync) fs.mkdirSync(directory, { recursive: true })
-        resolve(level(directory, options))
+        const db = level(directory, options)
+        await db.open()
+        resolve(db)
       }
     })
   }
