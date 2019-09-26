@@ -1,8 +1,8 @@
 # OrbitDB Storage Adapter
 
-> A wrapper for abstract-leveldown compliant stores, used by OrbitDB
+[![CircleCI](https://circleci.com/gh/orbitdb/orbit-db-storage-adapter/tree/master.svg?style=svg)](https://circleci.com/gh/orbitdb/orbit-db-storage-adapter/tree/master) [![Gitter](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/orbitdb/Lobby) [![Matrix](https://img.shields.io/badge/matrix-%23orbitdb%3Apermaweb.io-blue.svg)](https://riot.permaweb.io/#/room/#orbitdb:permaweb.io) [![Discord](https://img.shields.io/discord/475789330380488707?color=blueviolet&label=discord)](https://discord.gg/cscuf5T)
 
-[![CircleCI](https://circleci.com/gh/orbitdb/orbit-db-storage-adapter/tree/master.svg?style=svg)](https://circleci.com/gh/orbitdb/orbit-db-storage-adapter/tree/master)
+> A wrapper for abstract-leveldown compliant stores, used by OrbitDB
 
 This is a tool that manages a persistent connection to an [`abstract-leveldown`](https://github.com/Level/abstract-leveldown) compliant store. The implementation tests indicate include examples for the following stores
 
@@ -51,11 +51,11 @@ await storage.destroy(store)
 ### Options
 
 When setting everything up, you have the opportunity to pass two sets of options: one for the `leveldown` instantiation, and the other for the `levelup` instantiation.
- 
+
 ## Contributing
 
 Pull requests and issues are welcome. Issues tagged with "[Help Wanted](https://github.com/orbitdb/orbit-db-storage-adapter/issues?q=is%3Aopen+is%3Aissue+label%3A"help+wanted")" will have the most impact.
 
 ## License 
 
-MIT © Haja Networks Oy
+[MIT](LICENSE) © Haja Networks Oy

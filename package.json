@@ -23,7 +23,8 @@
   ],
   "author": "hajamark <mark@haja.io>",
   "localMaintainers": [
-    "hajamark <mark@haja.io>"
+    "hajamark <mark@haja.io>",
+    "shamb0t <shamb0t@haja.io>"
   ],
   "standard": {
     "env": [
