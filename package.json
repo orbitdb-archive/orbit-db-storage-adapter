@@ -60,8 +60,6 @@
     "mongodown": "^2.0.0",
     "redis-server": "^1.2.2",
     "redisdown": "^0.1.12",
-    "sqldown": "^2.1.0",
-    "sqlite3": "^5.0.2",
     "standard": "^16.0.3",
     "webpack": "^4.32.0",
     "webpack-cli": "^3.3.2"

@@ -24,12 +24,6 @@ module.exports = [
     module: require('jsondown'),
     fileName: 'orbitdb.json'
   },
-  {
-    key: 'sqldown',
-    type: 'node',
-    module: require('sqldown'),
-    fileName: 'orbitdb.sql'
-  }
   // Disabling for now since it was breaking CI builds, but keep it available
   // {
   //   key: 'mongodown',
