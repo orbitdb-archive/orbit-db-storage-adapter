@@ -1,7 +1,7 @@
 const assert = require('assert')
 
 const Storage = require('../src')
-const { implementations } = require('orbit-db-test-utils')
+const implementations = require('./implementations')
 const timeout = 2000
 
 const data = [
@@ -23,8 +23,8 @@ describe('Storage Adapters - Default (level)', function () {
   })
 
   it('creates a level store if no storage is passed', async () => {
-    assert.strictEqual(store.db.status, 'opening')
-    assert.strictEqual(store.db._db.db.location, './orbitdb')
+    assert.strictEqual(store.db.status, 'open')
+    assert.strictEqual(store.db.db.location, './orbitdb')
   })
 
   data.forEach(d => {
