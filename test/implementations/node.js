@@ -23,7 +23,7 @@ module.exports = [
     type: 'node',
     module: require('jsondown'),
     fileName: 'orbitdb.json'
-  },
+  }
   // Disabling for now since it was breaking CI builds, but keep it available
   // {
   //   key: 'mongodown',
