@@ -34,7 +34,8 @@ class Storage {
   }
 
   createStore (directory = './orbitdb', options = {}) {
-    return new Promise(async (resolve, reject) => {
+    // TODO: Refactor to not use async Promise executor
+    return new Promise(async (resolve, reject) => { /* eslint-disable-line */
       this.options.up = options
       await this.preCreate(directory, this.options)
       let store, db

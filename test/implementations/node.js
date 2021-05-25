@@ -1,6 +1,6 @@
 // const mongoUnit = require('mongo-unit')
-const spawn = require('child_process').spawn
-const exec = require('child_process').exec
+// const spawn = require('child_process').spawn
+// const exec = require('child_process').exec
 
 module.exports = [
   {
@@ -29,7 +29,7 @@ module.exports = [
     type: 'node',
     module: require('sqldown'),
     fileName: 'orbitdb.sql'
-  },
+  }
   // Disabling for now since it was breaking CI builds, but keep it available
   // {
   //   key: 'mongodown',

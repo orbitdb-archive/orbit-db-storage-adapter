@@ -58,11 +58,11 @@ implementations.forEach(implementation => {
 
     let storage, store
 
-    let location = implementation.fileName
-    let server = implementation.server
+    const location = implementation.fileName
+    const server = implementation.server
 
     beforeEach(async () => {
-      let storageType = implementation.module
+      const storageType = implementation.module
       storage = Storage(storageType)
       if (server && server.start) await implementation.server.start({})
     })
