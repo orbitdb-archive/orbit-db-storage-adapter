@@ -17,6 +17,7 @@ async function upgrade (store, leveljs) {
     })
   })
   await setUpgraded(store)
+  console.log('level-js has been upgraded (v4 -> v5)')
 }
 
 const isUpgraded = async store => Number(await store.get(upgradeKey).catch(e => 0)) === Number(upgradeValue)
