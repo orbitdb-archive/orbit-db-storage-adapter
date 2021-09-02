@@ -4,6 +4,7 @@ const levelup = require('levelup')
 const level = require('level')
 const reachdown = require('reachdown')
 const fs = (typeof window === 'object' || typeof self === 'object') ? null : eval('require("fs")') // eslint-disable-line
+const leveljsV5 = require('./level-jsV5')
 
 // Should work for all abstract-leveldown compliant stores
 
@@ -68,38 +69,10 @@ class Storage {
     store = store || db
     const leveljs = reachdown(store, 'level-js', true)
     if (leveljs && leveljs.upgrade) {
-      await this._leveljsUpgrade(store, leveljs)
+      await leveljsV5.upgrade(store, leveljs)
     }
 
     return store
-  }
-
-  // upgrade level-js to version 5.0.0
-  // https://github.com/Level/level-js/blob/master/UPGRADING.md#500
-  async _leveljsUpgrade (store, leveljs) {
-    const upgradeKey = new Uint8Array([0])
-
-    async function isUpgraded () {
-      return Boolean(await store.get(upgradeKey).catch(e => false))
-    }
-    async function setUpgraded () {
-      await store.put(upgradeKey, '1')
-    }
-
-    // return if already upgraded
-    if (await isUpgraded()) {
-      store._leveljs5 = true
-      return
-    }
-
-    // upgrade store and persist that it was upgraded
-    await new Promise((resolve, reject) => {
-      leveljs.upgrade(function (err) {
-        if (err) reject(err)
-        else resolve()
-      })
-    })
-    await setUpgraded()
   }
 
   destroy (store) {
