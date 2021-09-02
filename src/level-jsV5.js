@@ -1,11 +1,15 @@
 'use strict'
+const reachdown = require('reachdown')
 
 const upgradeKey = '__level-js__'
 const upgradeValue = '5'
 
 // upgrade level-js to version 5.0.0
 // https://github.com/Level/level-js/blob/master/UPGRADING.md#500
-async function upgrade (store, leveljs) {
+async function upgrade (store) {
+  const leveljs = reachdown(store, 'level-js', true)
+  if (!leveljs || !leveljs.upgrade) return
+
   // return if already upgraded
   if (await isUpgraded(store)) { return }
 

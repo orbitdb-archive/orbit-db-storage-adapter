@@ -2,7 +2,6 @@
 
 const levelup = require('levelup')
 const level = require('level')
-const reachdown = require('reachdown')
 const fs = (typeof window === 'object' || typeof self === 'object') ? null : eval('require("fs")') // eslint-disable-line
 const leveljsV5 = require('./level-jsV5')
 
@@ -67,10 +66,8 @@ class Storage {
     }
 
     store = store || db
-    const leveljs = reachdown(store, 'level-js', true)
-    if (leveljs && leveljs.upgrade) {
-      await leveljsV5.upgrade(store, leveljs)
-    }
+
+    await leveljsV5.upgrade(store)
 
     return store
   }
