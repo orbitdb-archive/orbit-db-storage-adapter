@@ -64,18 +64,14 @@ class Storage {
     }
   }
 
-  destroy (store) {
-    return new Promise((resolve, reject) => {
-      // TODO: Clean this up
-      if (!this.storage.destroy) resolve()
+  async destroy (store) {
 
-      this.storage.destroy(store._db.location, (err) => {
-        if (err) {
-          return reject(err)
-        }
-        resolve()
-      })
-    })
+    if (!this.storage.destory) return
+
+    await this.storage.destory(store._db.location)
+
+    return
+
   }
 
   async preCreate (directory, options) {} // to be overridden
