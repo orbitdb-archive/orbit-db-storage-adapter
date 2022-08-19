@@ -8,7 +8,7 @@ module.exports = [
     key: 'memdown',
     type: 'browser',
     module: require('memdown')
-  },
+  }
   //  {
   //   key: 'localdown',
   //   type: 'browser',
