@@ -19,7 +19,10 @@ module.exports = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
     }),
-    new webpack.IgnorePlugin(/mongo|redis/)
+    new webpack.IgnorePlugin({
+      resourceRegExp: /mongo|redis/,
+      contextRegExp: /mongo|redis/
+    })
   ],
   externals: {
     fs: '{}',
@@ -29,21 +32,24 @@ module.exports = {
     tls: '{}',
     child_process: {},
     dns: '{}'
-    // path: '{}',
-    // "node-gyp-build": '{}'
   },
   resolve: {
     modules: [
       'node_modules',
       path.resolve(__dirname, '../node_modules')
-    ]
+    ],
+    fallback: {
+      "path": false,
+      "os": false
+    }
   },
   resolveLoader: {
     modules: [
       'node_modules',
       path.resolve(__dirname, '../node_modules')
     ],
-    moduleExtensions: ['-loader']
+    extensions: ['.js', '.json'],
+    mainFields: ['loader', 'main']
   },
   module: {
     rules: [

@@ -60,8 +60,8 @@
     "mongodown": "^2.0.0",
     "redis-server": "^1.2.2",
     "redisdown": "^0.1.12",
-    "standard": "^16.0.3",
-    "webpack": "^4.32.0",
-    "webpack-cli": "^3.3.2"
+    "standard": "^17.0.0",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   }
 }
