@@ -65,13 +65,9 @@ class Storage {
   }
 
   async destroy (store) {
-
     if (!this.storage.destory) return
 
     await this.storage.destory(store._db.location)
-
-    return
-
   }
 
   async preCreate (directory, options) {} // to be overridden
