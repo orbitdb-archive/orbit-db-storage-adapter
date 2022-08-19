@@ -33,7 +33,7 @@ class Storage {
     this.options = { down: leveldownOptions }
   }
 
-  createStore (directory = './orbitdb', options = {}) {
+  async createStore (directory = './orbitdb', options = {}) {
     this.options.up = options
     await this.preCreate(directory, this.options)
     let store, db
