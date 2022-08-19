@@ -22,6 +22,9 @@ module.exports = {
       'process.env': {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
+    }),
+    new webpack.ProvidePlugin({
+      Buffer: ['buffer', 'Buffer']
     })
   ],
   resolve: {
@@ -34,12 +37,7 @@ module.exports = {
     ],
     alias: {
       leveldown: 'level-js'
-    },
-    plugins: [
-      new webpack.ProvidePlugin({
-        Buffer: ['buffer', 'Buffer']
-      })
-    ]
+    }
   },
   resolveLoader: {
     modules: [
