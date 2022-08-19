@@ -12,17 +12,6 @@ module.exports = [
     key: 'memdown',
     type: 'node',
     module: require('memdown')
-  },
-  // {
-  //   key: 'localdown',
-  //   type: 'node',
-  //   module: require('localstorage-down')
-  // },
-  {
-    key: 'jsondown',
-    type: 'node',
-    module: require('jsondown'),
-    fileName: 'orbitdb.json'
   }
   // Disabling for now since it was breaking CI builds, but keep it available
   // {
