@@ -50,11 +50,9 @@ class Storage {
 
       // More backwards compatibility
 
-      db.status = db && db.status === "unknown-shim" ? "open" : db.status
+      db.status = db && db.status === 'unknown-shim' ? 'open' : db.status
 
       return store // should this not be db?
-
-
     } else {
       // Default leveldown or level-js store with directory creation
       if (fs && fs.mkdirSync) fs.mkdirSync(directory, { recursive: true })
