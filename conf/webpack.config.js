@@ -25,13 +25,21 @@ module.exports = {
     })
   ],
   resolve: {
+    fallback: {
+      buffer: require.resolve('buffer/')
+    },
     modules: [
       'node_modules',
       path.resolve(__dirname, '../node_modules')
     ],
     alias: {
       leveldown: 'level-js'
-    }
+    },
+    plugins: [
+      new webpack.ProvidePlugin({
+        Buffer: ['buffer', 'Buffer']
+      })
+    ]
   },
   resolveLoader: {
     modules: [
