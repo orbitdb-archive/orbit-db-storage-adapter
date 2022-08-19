@@ -39,8 +39,8 @@ module.exports = {
       path.resolve(__dirname, '../node_modules')
     ],
     fallback: {
-      "path": false,
-      "os": false
+      path: false,
+      os: false
     }
   },
   resolveLoader: {
