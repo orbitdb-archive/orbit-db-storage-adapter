@@ -13,11 +13,11 @@ module.exports = [
     type: 'node',
     module: require('memdown')
   },
-  {
-    key: 'localdown',
-    type: 'node',
-    module: require('localstorage-down')
-  },
+  // {
+  //   key: 'localdown',
+  //   type: 'node',
+  //   module: require('localstorage-down')
+  // },
   {
     key: 'jsondown',
     type: 'node',

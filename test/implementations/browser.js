@@ -9,14 +9,14 @@ module.exports = [
     type: 'browser',
     module: require('memdown')
   },
-  {
-    key: 'localdown',
-    type: 'browser',
-    module: require('localstorage-down')
-  },
-  {
-    key: 'fruitdown',
-    type: 'browser',
-    module: require('fruitdown')
-  }
+  //  {
+  //   key: 'localdown',
+  //   type: 'browser',
+  //   module: require('localstorage-down')
+  // },
+  // {
+  //   key: 'fruitdown',
+  //   type: 'browser',
+  //   module: require('fruitdown')
+  // }
 ]
