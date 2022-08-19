@@ -25,27 +25,4 @@ module.exports = [
   //     stop: async () => mongoUnit.stop()
   //   }
   // },
-  // {
-  //   key: 'redisdown',
-  //   type: 'node',
-  //   module: require('redisdown'),
-  //   server: {
-  //     start: () => {
-  //       return new Promise((resolve, reject) => {
-  //         const server = new RedisServer(6379);
-  //         server.open((err) => {
-  //           if (err === null) {
-  //             reject(err)
-  //           }
-  //           resolve()
-  //         })
-  //       })
-  //     },
-  //     afterEach: async () => {},
-  //     stop: async () => {
-  //       const server = new RedisServer(6379);
-  //       server.stop()
-  //     }
-  //   }
-  // }
 ]

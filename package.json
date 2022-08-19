@@ -55,8 +55,6 @@
     "mongo-unit": "^2.0.1",
     "mongodb-memory-server": "^6.9.6",
     "mongodown": "^2.0.0",
-    "redis-server": "^1.2.2",
-    "redisdown": "^0.1.12",
     "standard": "^17.0.0",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0"
