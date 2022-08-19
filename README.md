@@ -9,10 +9,6 @@ This is a tool that manages a persistent connection to an [`abstract-leveldown`]
 - **[`leveldown`](https://github.com/Level/leveldown)**
 - **[`memdown`](https://github.com/Level/memdown)**
 - **[`level-js`](https://github.com/Level/level.js)**
-- **[`jsondown`](https://github.com/toolness/jsondown)**
-- **[`fruitdown`](https://github.com/nolanlawson/fruitdown)**
-- **[`localstorage-down`](https://github.com/No9/localstorage-down)**
-- **[`localdown`](https://github.com/bhoriuchi/localdown)**
 
 [Help is wanted](https://github.com/orbitdb/orbit-db-storage-adapter/issues/3) to support more stores!
 
