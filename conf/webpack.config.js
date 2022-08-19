@@ -4,6 +4,7 @@ const path = require('path')
 const webpack = require('webpack')
 
 module.exports = {
+  mode: 'production',
   entry: './src/index.js',
   output: {
     libraryTarget: 'var',
@@ -11,15 +12,10 @@ module.exports = {
     filename: '../dist/orbitdb-storage.min.js'
   },
   target: 'web',
-  devtool: 'none',
+  devtool: 'source-map',
   externals: {
     fs: '{}',
     mkdirp: '{}'
-  },
-  node: {
-    console: false,
-    Buffer: true,
-    mkdirp: 'empty'
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -42,6 +38,7 @@ module.exports = {
       'node_modules',
       path.resolve(__dirname, '../node_modules')
     ],
-    moduleExtensions: ['-loader']
+    extensions: ['.js', '.json'],
+    mainFields: ['loader', 'main']
   }
 }
