@@ -34,37 +34,36 @@ class Storage {
   }
 
   createStore (directory = './orbitdb', options = {}) {
-    // TODO: Refactor to not use async Promise executor
-    return new Promise(async (resolve, reject) => { /* eslint-disable-line */
-      this.options.up = options
-      await this.preCreate(directory, this.options)
-      let store, db
+    this.options.up = options
+    await this.preCreate(directory, this.options)
+    let store, db
 
-      if (this.storage) {
-        db = this.storage(directory, this.options.down)
+    if (this.storage) {
+      db = this.storage(directory, this.options.down)
 
-        // For compatibility with older abstract-leveldown stores
-        if (!db.status) db.status = 'unknown-shim'
-        if (!db.location) db.location = directory
+      // For compatibility with older abstract-leveldown stores
+      if (!db.status) db.status = 'unknown-shim'
+      if (!db.location) db.location = directory
 
-        store = levelup(db, options)
-        store.open((err) => {
-          if (err) {
-            return reject(err)
-          }
+      store = levelup(db, options)
+      await store.open() // TODO: Is this necessary? https://www.npmjs.com/package/levelup says it is only necessary when reopening a closed db.
 
-          // More backwards compatibility
-          if (db && db.status === 'unknown-shim') db.status = 'open'
-          resolve(store)
-        })
-      } else {
-        // Default leveldown or level-js store with directory creation
-        if (fs && fs.mkdirSync) fs.mkdirSync(directory, { recursive: true })
-        const db = level(directory, options)
-        await db.open()
-        resolve(db)
-      }
-    })
+      // More backwards compatibility
+
+      db.status = db && db.status === "unknown-shim" ? "open" : db.status
+
+      return store // should this not be db?
+
+
+    } else {
+      // Default leveldown or level-js store with directory creation
+      if (fs && fs.mkdirSync) fs.mkdirSync(directory, { recursive: true })
+
+      const db = level(directory, options)
+      await db.open()
+
+      return db
+    }
   }
 
   destroy (store) {
