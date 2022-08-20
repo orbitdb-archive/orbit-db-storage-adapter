@@ -23,14 +23,8 @@ module.exports = {
         NODE_ENV: JSON.stringify(process.env.NODE_ENV)
       }
     }),
-    new webpack.ProvidePlugin({
-      Buffer: ['buffer', 'Buffer']
-    })
   ],
   resolve: {
-    fallback: {
-      buffer: require.resolve('buffer/')
-    },
     modules: [
       'node_modules',
       path.resolve(__dirname, '../node_modules')

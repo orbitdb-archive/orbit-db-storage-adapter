@@ -22,6 +22,10 @@ module.exports = {
     new webpack.IgnorePlugin({
       resourceRegExp: /mongo|redis/,
       contextRegExp: /mongo|redis/
+    }),
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+      Buffer: ['buffer', 'Buffer']
     })
   ],
   externals: {
@@ -39,6 +43,7 @@ module.exports = {
       path.resolve(__dirname, '../node_modules')
     ],
     fallback: {
+      buffer: require.resolve('buffer'),
       path: false,
       os: false
     }
