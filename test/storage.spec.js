@@ -24,7 +24,7 @@ describe('Storage Adapters - Default (level)', function () {
 
   it('creates a level store if no storage is passed', async () => {
     assert.strictEqual(store.db.status, 'open')
-    assert.strictEqual(store.db.db.location, './orbitdb')
+    assert.strictEqual(store.db.location, './orbitdb')
   })
 
   data.forEach(d => {
