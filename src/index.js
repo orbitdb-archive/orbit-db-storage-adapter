@@ -1,7 +1,7 @@
 'use strict'
 
 const levelup = require('levelup')
-const level = require('level')
+const { Level } = require('level')
 const fs = (typeof window === 'object' || typeof self === 'object') ? null : eval('require("fs")') // eslint-disable-line
 
 // Should work for all abstract-leveldown compliant stores
@@ -57,10 +57,10 @@ class Storage {
       // Default leveldown or level-js store with directory creation
       if (fs && fs.mkdirSync) fs.mkdirSync(directory, { recursive: true })
 
-      const db = level(directory, options)
+      const db = new Level(directory, options)
       await db.open()
 
-      return db
+      return levelup(db)
     }
   }
 
