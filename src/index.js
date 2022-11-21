@@ -1,8 +1,8 @@
 'use strict'
 
-const levelup = require('levelup')
-const { Level } = require('level')
-const fs = (typeof window === 'object' || typeof self === 'object') ? null : eval('require("fs")') // eslint-disable-line
+import levelup from 'levelup'
+import { Level } from 'level'
+// import * as fs from 'fs'
 
 // Should work for all abstract-leveldown compliant stores
 
@@ -55,8 +55,8 @@ class Storage {
       return store // should this not be db?
     } else {
       // Default leveldown or level-js store with directory creation
-      if (fs && fs.mkdirSync) fs.mkdirSync(directory, { recursive: true })
-
+      // if (fs && fs.mkdirSync) fs.mkdirSync(directory, { recursive: true })
+      console.log('directory', directory)
       const db = new Level(directory, options)
       await db.open()
 
@@ -73,4 +73,4 @@ class Storage {
   async preCreate (directory, options) {} // to be overridden
 }
 
-module.exports = (storage, options) => new Storage(storage, options)
+export default (storage, options) => new Storage(storage, options)

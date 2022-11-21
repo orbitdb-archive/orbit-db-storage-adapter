@@ -3,6 +3,7 @@
   "version": "0.8.0",
   "description": "OrbitDB adapter for any abstract-leveldown compliant storage",
   "main": "./src/index.js",
+  "type": "module",
   "scripts": {
     "test": "npm run test:node && npm run test:browser",
     "test:node": "TEST=all mocha",

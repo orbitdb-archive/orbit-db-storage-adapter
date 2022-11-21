@@ -1,7 +1,8 @@
-const assert = require('assert')
+import assert from 'assert'
 
-const Storage = require('../src')
-const implementations = require('./implementations')
+import Storage from '../src/index.js'
+import implementations from './implementations/index.js'
+
 const timeout = 2000
 
 const data = [

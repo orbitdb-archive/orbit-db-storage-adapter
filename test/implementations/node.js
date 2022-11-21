@@ -2,16 +2,16 @@
 // const spawn = require('child_process').spawn
 // const exec = require('child_process').exec
 
-module.exports = [
+export default [
   {
     key: 'leveldown',
     type: 'node',
-    module: require('leveldown')
+    module: (await import('leveldown')).default
   },
   {
     key: 'memdown',
     type: 'node',
-    module: require('memdown')
+    module: (await import('memdown')).default
   }
   // Disabling for now since it was breaking CI builds, but keep it available
   // {
