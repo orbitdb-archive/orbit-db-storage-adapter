@@ -9,7 +9,7 @@
     "test:node": "TEST=all mocha",
     "test:browser": "npm run build:tests && mocha-headless-chrome -f ./test/browser/index.html -a no-sandbox",
     "build": "webpack --config ./conf/webpack.config.js",
-    "build:tests": "webpack --config ./conf/webpack.tests.config.js --mode production",
+    "build:tests": "webpack --config ./conf/webpack.tests.config.js",
     "lint": "standard",
     "lint:fix": "standard --fix"
   },
@@ -63,6 +63,6 @@
     "process": "^0.11.10",
     "standard": "^17.0.0",
     "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0"
+    "webpack-cli": "^5.0.0"
   }
 }

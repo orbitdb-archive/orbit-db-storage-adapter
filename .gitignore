@@ -2,6 +2,6 @@ dump.rdb
 orbitdb.json
 node_modules
 redis-stable*
-test/browser/bundle.js*
+test/browser/*bundle.js*
 orbitdb
 customDir
