@@ -5,3 +5,4 @@ redis-stable*
 test/browser/*bundle.js*
 orbitdb
 customDir
+dist/types
