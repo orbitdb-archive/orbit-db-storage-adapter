@@ -12,7 +12,7 @@ export default (env, argv) => {
     output: {
       libraryTarget: 'var',
       library: 'Storage',
-      filename: '../dist/orbitdb-storage-adapter.min.js'
+      filename: '../dist/orbit-db-storage-adapter.min.js'
     },
     target: 'web',
     devtool: 'source-map',
