@@ -28,9 +28,11 @@ Usage is the same on the command line or in the browser. `async`/`await` used fo
 
 ```JavaScript
 // Requirements
-const leveldown = require('leveldown') // or any abstract-leveldown complaint store
+import leveldown from 'leveldown' // or any abstract-leveldown complaint store
+import storageAdapter from 'orbit-db-storage-adapter')
+
 const leveldownOptions = {}
-const storage = require('orbit-db-storage-adapter')(leveldown, leveldownOptions)
+const storage = storageAdapter(leveldown, leveldownOptions)
 
 const levelupOptions = {} // see below
 store = await storage.createStore(location, levelupOptions) // These options passed to levelup instance
