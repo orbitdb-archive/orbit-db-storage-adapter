@@ -23,8 +23,8 @@ describe('Storage Adapters - Default (level)', function () {
   })
 
   it('creates a level store if no storage is passed', async () => {
-    assert.strictEqual(store.db.status, 'open')
-    assert.strictEqual(store.db.location, './orbitdb')
+    assert.strictEqual(store.status, 'open')
+    assert.strictEqual(store.location, './orbitdb')
   })
 
   data.forEach(d => {
@@ -81,14 +81,14 @@ for (let implementation of implementations) {
 
     it('Creates a store in default ./orbitdb directory', async () => {
       store = await storage.createStore(location, implementation.defaultOptions || {})
-      assert.strictEqual(store.db.status, 'open')
-      assert.strictEqual(store.db.location, location || './orbitdb')
+      assert.strictEqual(store.status, 'open')
+      assert.strictEqual(store.location, location || './orbitdb')
     })
 
     it('Creates a store in a custom directory', async () => {
       store = await storage.createStore(location || './customDir')
-      assert.strictEqual(store.db.status, 'open')
-      assert.strictEqual(store.db.location, location || './customDir')
+      assert.strictEqual(store.status, 'open')
+      assert.strictEqual(store.location, location || './customDir')
     })
 
     data.forEach(d => {

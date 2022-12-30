@@ -1,4 +1,3 @@
-import levelup from 'levelup'
 import { Level } from 'level'
 import * as fs from 'fs'
 
@@ -34,31 +33,15 @@ class Storage {
   async createStore (directory = './orbitdb', options = {}) {
     this.options.up = options
     await this.preCreate(directory, this.options)
-    let store, db
 
-    if (this.storage) {
-      db = this.storage(directory, this.options.down)
-
-      // For compatibility with older abstract-leveldown stores
-      if (!db.status) db.status = 'unknown-shim'
-      if (!db.location) db.location = directory
-
-      store = levelup(db, options)
-      await store.open() // TODO: Is this necessary? https://www.npmjs.com/package/levelup says it is only necessary when reopening a closed db.
-
-      // More backwards compatibility
-
-      db.status = db && db.status === 'unknown-shim' ? 'open' : db.status
-
-      return store // should this not be db?
-    } else {
-      // Default leveldown or level-js store with directory creation
+    if (!this.storage) {
       if (fs && fs.mkdirSync) fs.mkdirSync(directory, { recursive: true })
-      const db = new Level(directory, options)
-      await db.open()
-
-      return levelup(db)
     }
+
+    const db = new Level(directory, options)
+    await db.open()
+
+    return db
   }
 
   async destroy (store) {

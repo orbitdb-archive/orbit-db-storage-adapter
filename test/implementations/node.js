@@ -2,14 +2,14 @@
 // const spawn = require('child_process').spawn
 // const exec = require('child_process').exec
 
-import leveldown from "leveldown"
+import level from "level"
 import memdown from "memdown"
 
 export default [
   {
-    key: 'leveldown',
+    key: 'level',
     type: 'node',
-    module: leveldown
+    module: level
   },
   {
     key: 'memdown',
