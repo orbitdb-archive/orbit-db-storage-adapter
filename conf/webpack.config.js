@@ -12,7 +12,7 @@ export default (env, argv) => {
     output: {
       libraryTarget: 'var',
       library: 'Storage',
-      filename: '../dist/orbitdb-storage.min.js'
+      filename: '../dist/orbit-db-storage-adapter.min.js'
     },
     target: 'web',
     devtool: 'source-map',
@@ -22,15 +22,12 @@ export default (env, argv) => {
     },
     plugins: [
       new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-        }
+        'process.env.NODE_ENV': JSON.stringify('production')
       })
     ],
     resolve: {
       modules: [
-        'node_modules',
-        path.resolve(__dirname, '../node_modules')
+        'node_modules'
       ],
       alias: {
         leveldown: 'level-js'

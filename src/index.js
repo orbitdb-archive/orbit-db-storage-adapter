@@ -1,8 +1,6 @@
-'use strict'
-
 import levelup from 'levelup'
 import { Level } from 'level'
-// import * as fs from 'fs'
+import * as fs from 'fs'
 
 // Should work for all abstract-leveldown compliant stores
 
@@ -55,8 +53,7 @@ class Storage {
       return store // should this not be db?
     } else {
       // Default leveldown or level-js store with directory creation
-      // if (fs && fs.mkdirSync) fs.mkdirSync(directory, { recursive: true })
-      console.log('directory', directory)
+      if (fs && fs.mkdirSync) fs.mkdirSync(directory, { recursive: true })
       const db = new Level(directory, options)
       await db.open()
 
