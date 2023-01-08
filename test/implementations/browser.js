@@ -1,13 +1,16 @@
-module.exports = [
+import leveljs from 'level-js'
+import memdown from 'memdown'
+
+export default [
   {
     key: 'level-js',
     type: 'browser',
-    module: require('level-js')
+    module: leveljs
   },
   {
     key: 'memdown',
     type: 'browser',
-    module: require('memdown')
+    module: memdown
   }
   //  {
   //   key: 'localdown',
