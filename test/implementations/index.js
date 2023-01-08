@@ -10,6 +10,6 @@ export default async () => {
     const m = await import('./node.js')
     module = await m.default
   }
-  
+
   return module
 }
