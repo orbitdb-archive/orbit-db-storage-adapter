@@ -27,7 +27,7 @@ export default (env, argv) => {
       fallback: {
         path: false,
         os: false,
-        fs: false,
+        fs: false
       }
     },
     module: {

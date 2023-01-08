@@ -1,6 +1,7 @@
 import assert from 'assert'
 
 import Storage from '../src/index.js'
+import implementations from './implementations/index.js'
 
 const timeout = 2000
 
@@ -52,9 +53,7 @@ describe('Storage Adapters - Default (level)', function () {
   })
 })
 
-const implementations = await (await import('./implementations/index.js')).default
-
-for (let implementation of implementations) {
+for (const implementation of await implementations()) {
   describe(`Storage Adapters - ${implementation.key}`, function () {
     this.timeout(timeout)
 

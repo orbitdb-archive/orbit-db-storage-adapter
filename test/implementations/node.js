@@ -2,8 +2,8 @@
 // const spawn = require('child_process').spawn
 // const exec = require('child_process').exec
 
-import level from "level"
-import memdown from "memdown"
+import level from 'level'
+import memdown from 'memdown'
 
 export default [
   {

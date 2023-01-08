@@ -1,5 +1,5 @@
-import leveljs from "level-js"
-import memdown from "memdown"
+import leveljs from 'level-js'
+import memdown from 'memdown'
 
 export default [
   {

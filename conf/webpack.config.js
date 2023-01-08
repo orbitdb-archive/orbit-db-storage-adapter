@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url'
 export default (env, argv) => {
   const __filename = fileURLToPath(import.meta.url)
   const __dirname = path.dirname(__filename)
-    
+
   return {
     mode: 'production',
     entry: './src/index.js',
