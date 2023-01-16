@@ -28,10 +28,7 @@ export default (env, argv) => {
     resolve: {
       modules: [
         'node_modules'
-      ],
-      alias: {
-        leveldown: 'level-js'
-      }
+      ]
     },
     resolveLoader: {
       modules: [

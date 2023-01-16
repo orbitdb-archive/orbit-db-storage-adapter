@@ -1,25 +1,9 @@
-import leveljs from 'level-js'
-import memdown from 'memdown'
+import level from 'level'
 
 export default [
   {
-    key: 'level-js',
+    key: 'level',
     type: 'browser',
-    module: leveljs
-  },
-  {
-    key: 'memdown',
-    type: 'browser',
-    module: memdown
+    module: level
   }
-  //  {
-  //   key: 'localdown',
-  //   type: 'browser',
-  //   module: require('localstorage-down')
-  // },
-  // {
-  //   key: 'fruitdown',
-  //   type: 'browser',
-  //   module: require('fruitdown')
-  // }
 ]
