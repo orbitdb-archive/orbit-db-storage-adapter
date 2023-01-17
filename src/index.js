@@ -23,6 +23,9 @@ class Storage {
     }
 
     this.storage = storage
+
+    // TODO: we can probably remove all of the below as they're related
+    // to the older versions of leveldb
     this.preCreate = options.preCreate ? options.preCreate : () => {}
 
     const leveldownOptions = Object.assign({}, options, defaults)
@@ -31,6 +34,8 @@ class Storage {
   }
 
   async createStore (directory = './orbitdb', options = {}) {
+    // TODO: we can probably remove the two lines below as they're
+    // related to older versions of leveldb
     this.options.up = options
     await this.preCreate(directory, this.options)
 
@@ -45,7 +50,7 @@ class Storage {
   }
 
   async destroy (store) {
-    if (!this.storage.destory) return
+    if (!this.storage || !this.storage.destroy) return
 
     await this.storage.destory(store._db.location)
   }
